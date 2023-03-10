@@ -369,7 +369,6 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
     }
     protected void OnUpdate(object sender, EventArgs e)
     {
-
         int i = 0;
         MetricsImpl mvi = new MetricsImpl();
         //var lastrow = GridView.Rows[GridView.Rows.Count - 1];
@@ -1126,7 +1125,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                                 calcDecimal = (decimal)cntJan101000 / cntJan102000;
                                 cntJanTotalDecimal = Math.Round(calcDecimal, 1);
                             }
-                            if (cntFeb101000.ToString() != "0" && cntJan102000.ToString() != "0")
+                            if (cntFeb101000.ToString() != "0" && cntFeb102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntFeb101000 / cntFeb102000;
                                 cntFebTotalDecimal = Math.Round(calcDecimal, 1);

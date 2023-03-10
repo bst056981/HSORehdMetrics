@@ -9,7 +9,7 @@
     </siteMapNode>   
     <siteMapNode title="Admin" roles="SITE_ADMN">
       <siteMapNode url="Admin/Users.aspx" title="Users"/>
-      <siteMapNode url="Admin/AddRecordYears.aspx" title="Add New Year Records"/>
+      <!--<siteMapNode url="Admin/AddRecordYears.aspx" title="Add New Year Records"/>-->
     </siteMapNode>
   </siteMapNode>
 </siteMap>
