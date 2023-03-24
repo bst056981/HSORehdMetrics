@@ -33,6 +33,7 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
     int cnt = 0;
     int i = 3;
     decimal tot = 0;
+    decimal totSurveyRound = 0;
     decimal calAve = 0;
 
     protected void Page_Load(object sender, EventArgs e)
@@ -111,6 +112,11 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                 if (!String.IsNullOrEmpty(e.Row.Cells[i].Text) && e.Row.Cells[i].Text != "&nbsp;")
                 {
                     tot = tot + Convert.ToDecimal(e.Row.Cells[i].Text);
+                    if (e.Row.Cells[2].Text == "Likeliness to Recommend")
+                    {
+                        tot = 0;
+                        totSurveyRound = totSurveyRound + Convert.ToDecimal(e.Row.Cells[i].Text);
+                    }
                 }
             }
         }
@@ -118,13 +124,41 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             if (((System.Web.UI.WebControls.BoundField)((DataControlFieldCell)e.Row.Cells[51]).ContainingField).DataField == "TOTAL")
-            {
-                e.Row.Cells[51].Text = tot.ToString();
+            {               
+                if (e.Row.Cells[2].Text == "Likeliness to Recommend")
+                {
+                    e.Row.Cells[51].Text = "";
+                }
+                else
+                {
+                    e.Row.Cells[51].Text = tot.ToString();
+                }
             }
 
             if (((System.Web.UI.WebControls.BoundField)((DataControlFieldCell)e.Row.Cells[52]).ContainingField).DataField == "AVE")
             {
-                calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt);
+                if (e.Row.Cells[2].Text == "Likeliness to Recommend")
+                {
+                    calAve = Math.Round((totSurveyRound / monthCnt), 2);
+                }
+                else
+                {
+                    if (e.Row.Cells[2].Text.Contains("Attrition %"))
+                    {
+                        calAve = Math.Round((tot / monthCnt), 1);
+                    }
+                    else
+                    {
+                        if (e.Row.Cells[2].Text == "Critical Alarm Close Time" || e.Row.Cells[2].Text == "CLEC Call Back Average" || e.Row.Cells[2].Text == "Percentage of surveys completed")
+                        {
+                            calAve = Math.Round((tot / monthCnt), 2);
+                        }
+                        else
+                        {
+                            calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt);
+                        }
+                    }
+                }
                 e.Row.Cells[52].Text = calAve.ToString();
                 tot = 0;
             }
@@ -252,13 +286,35 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                 string colName = dt.Columns[c].ColumnName;
                 if (colName == "TOTAL")
                 {
-                    dt.Rows[i][c] = tot;
+                    if (dt.Rows[i][2].ToString() == "Likeliness to Recommend")
+                    {
+                        dt.Rows[i][c] = "";
+                    }
+                    else
+                    {
+                        dt.Rows[i][c] = tot;
+                    }
+                    
                 }
                 else
                 {
                     if (colName == "AVE")
                     {
-                        calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt);
+                        if (dt.Rows[i][2].ToString() == "Critical Alarm Close Time" || dt.Rows[i][2].ToString() == "CLEC Call Back Average" || dt.Rows[i][2].ToString() == "Percentage of surveys completed" || dt.Rows[i][2].ToString() == "Likeliness to Recommend")
+                        {
+                            calAve = (decimal)Math.Round(((decimal)tot / (decimal)monthCnt), 2);
+                        }
+                        else
+                        {
+                            if (dt.Rows[i][2].ToString().Contains("Attrition %"))
+                            {
+                                calAve = Math.Round((tot / monthCnt), 1);
+                            }
+                            else
+                            {
+                                calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt);
+                            }
+                        }
                         dt.Rows[i][c] = calAve.ToString();
                         tot = 0;
                     }

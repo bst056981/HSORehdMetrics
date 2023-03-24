@@ -54,7 +54,7 @@ namespace Agile.DAO {
         }
 
         public void UpdateUser(User usr) {
-            OracleParameter[] userParamsList = createUserParamList(usr);
+            OracleParameter[] userParamsList = createUserParamList2(usr);
             DBHelper.Execute(User.UPDATE_USER_SQL, userParamsList);
 
             DBHelper.Execute(User.DELETE_USER_ROLES_SQL, DBHelper.mp("userId", usr.UserId));
@@ -69,7 +69,6 @@ namespace Agile.DAO {
             }
         }
 
-
         private OracleParameter[] createUserParamList(User usr) {
             OracleParameter[] paramsList = new OracleParameter[6];
             paramsList[0] = DBHelper.mp("userId", usr.UserId);
@@ -81,6 +80,21 @@ namespace Agile.DAO {
 
             return paramsList;
         }
+
+        //This method is for Updating Users
+        private OracleParameter[] createUserParamList2(User usr)
+        {
+            OracleParameter[] paramsList = new OracleParameter[6];
+            paramsList[0] = DBHelper.mp("fName", usr.FName);
+            paramsList[1] = DBHelper.mp("lName", usr.LName);
+            paramsList[2] = DBHelper.mp("phone", usr.Phone);
+            paramsList[3] = DBHelper.mp("email", usr.Email);
+            paramsList[4] = DBHelper.mp("active", usr.Active);
+            paramsList[5] = DBHelper.mp("userId", usr.UserId);
+
+            return paramsList;
+        }
+
 
         private OracleParameter[] createRoleParamList(string role, string userId, string active)
         {

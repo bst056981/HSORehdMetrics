@@ -438,7 +438,15 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                     mv.Ytd = ytd.ToString();
                     if (!String.IsNullOrEmpty(ytd.ToString()))
                     {
-                        ave = (decimal)Math.Round((decimal)ytd / (decimal)months);
+                        if (GridView.DataKeys[i].Values[1].ToString() == "109100")
+                        {
+                            ave = (decimal)Math.Round(((decimal)ytd / (decimal)months), 2);
+                            mv.Ytd = "";
+                        }
+                        else
+                        {
+                            ave = (decimal)Math.Round((decimal)ytd / (decimal)months);
+                        }
                         mv.Ave = ave.ToString();
                     }
                     else { mv.Ave = "0"; }
