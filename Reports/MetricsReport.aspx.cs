@@ -137,7 +137,7 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
 
             if (((System.Web.UI.WebControls.BoundField)((DataControlFieldCell)e.Row.Cells[52]).ContainingField).DataField == "AVE")
             {
-                if (e.Row.Cells[2].Text == "Likeliness to Recommend")
+                if (e.Row.Cells[2].Text == "Likeliness to Recommend" || e.Row.Cells[2].Text == "REHD likeliness to Recommend")
                 {
                     calAve = Math.Round((totSurveyRound / monthCnt), 2);
                 }
@@ -149,7 +149,7 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                     }
                     else
                     {
-                        if (e.Row.Cells[2].Text == "Critical Alarm Close Time" || e.Row.Cells[2].Text == "CLEC Call Back Average" || e.Row.Cells[2].Text == "Percentage of surveys completed")
+                        if (e.Row.Cells[2].Text == "Critical Alarm Close Time" || e.Row.Cells[2].Text == "CLEC Call Back Average" || e.Row.Cells[2].Text == "Percentage of surveys completed" || e.Row.Cells[2].Text == "REHD percentage of surveys completed")
                         {
                             calAve = Math.Round((tot / monthCnt), 2);
                         }
