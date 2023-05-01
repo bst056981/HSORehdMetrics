@@ -471,6 +471,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "109100":
                         case "109300":
                         case "110200":
+                        case "110300":
                             cntJan1 = cntJan;
                             cntFeb1 = cntFeb;
                             cntMar1 = cntMar;
@@ -529,7 +530,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "108900":
                         case "109400":
                         case "109700":
-                        case "110300":
+                        case "110400":
                             cntJan2 = cntJan;
                             cntFeb2 = cntFeb;
                             cntMar2 = cntMar;
