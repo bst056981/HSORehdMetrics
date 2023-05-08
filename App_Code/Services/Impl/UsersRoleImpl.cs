@@ -7,11 +7,13 @@ using Agile.DAO;
 using Agile.Services.Interface;
 using System.Collections;
 
-namespace Agile.Services.Impl {
-    public class UsersRoleImpl : UsersRoleService {
-        public UsersRoleImpl() {
-
-    }
+namespace Agile.Services.Impl
+{
+    public class UsersRoleImpl : UsersRoleService
+    {
+        public UsersRoleImpl()
+        {
+        }
 
         #region UsersRoleService Members
 
@@ -21,21 +23,23 @@ namespace Agile.Services.Impl {
             return q.Select(p);
         }
 
-        public void Update(UsersRole p) {
+        public void Update(UsersRole p)
+        {
             UsersRoleDAO q = new UsersRoleDAO();
             q.Update(p);
         }
 
-        public void Insert(UsersRole p) {
+        public void Insert(UsersRole p)
+        {
             UsersRoleDAO q = new UsersRoleDAO();
             q.Insert(p);
         }
 
-        public void Delete(string p) {
+        public void Delete(string p)
+        {
             UsersRoleDAO q = new UsersRoleDAO();
             q.Delete(p);
         }
-
         #endregion
     }
 }

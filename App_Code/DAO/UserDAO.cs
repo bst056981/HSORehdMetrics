@@ -6,22 +6,20 @@ using Agile.Domain;
 using Agile.DAO;
 using Agile.Helper;
 
-/// <summary>
-/// Summary description for UserDAO
-/// </summary>
-namespace Agile.DAO {
-    public class UserDAO {
-        
-        public UserDAO() {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
 
-        public User FindByID(string userId) {
+namespace Agile.DAO
+{
+    public class UserDAO
+    {
+        public UserDAO()
+        {
+        }
+        public User FindByID(string userId)
+        {
             User usr = new User();
             DataTable dt = DBHelper.SelectDataTable(User.FIND_USER_BY_USER_ID, DBHelper.mp("userId", userId));
-            for (int i = 0; i < dt.Rows.Count; i++) {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
                 usr.UserId = (((DataRow)(dt.Rows[i]))["USER_ID"]).ToString();
                 usr.FName = (((DataRow)(dt.Rows[i]))["FNAME"]).ToString();
                 usr.LName = (((DataRow)(dt.Rows[i]))["LNAME"]).ToString();
@@ -33,27 +31,22 @@ namespace Agile.DAO {
             return usr;
         }
 
-        public void DocumentUserChange(string sessUsr, string appUsr, string activity)
+        public void InsertUser(User usr)
         {
-            OracleParameter[] parmList = new OracleParameter[3];
-            parmList[0] = DBHelper.mp("sess_user_id", sessUsr);
-            parmList[1] = DBHelper.mp("proc_user_id", appUsr);
-            parmList[2] = DBHelper.mp("proc_activity", activity);
-        }
-
-        public void InsertUser(User usr) {
             OracleParameter[] userParamsList = createUserParamList(usr);
             DBHelper.Execute(User.INSERT_USER_SQL, userParamsList);
             insertRoles(usr, "T");
         }
 
-        public void InsertPendingUser(User usr) {
+        public void InsertPendingUser(User usr)
+        {
             OracleParameter[] userParamsList = createUserParamList(usr);
             DBHelper.Execute(User.INSERT_USER_SQL, userParamsList);
             insertRoles(usr, "F");
         }
 
-        public void UpdateUser(User usr) {
+        public void UpdateUser(User usr)
+        {
             OracleParameter[] userParamsList = createUserParamList2(usr);
             DBHelper.Execute(User.UPDATE_USER_SQL, userParamsList);
 
@@ -61,15 +54,18 @@ namespace Agile.DAO {
             insertRoles(usr, "T");
         }
 
-        private void insertRoles(User usr, string active) {
+        private void insertRoles(User usr, string active)
+        {
             System.Collections.IEnumerator myEnumerator = usr.Roles.GetEnumerator();
-            while (myEnumerator.MoveNext()) {
+            while (myEnumerator.MoveNext())
+            {
                 OracleParameter[] roleParamsList = createRoleParamList(myEnumerator.Current.ToString(), usr.UserId, active);
                 DBHelper.Execute(User.INSERT_USER_ROLES_SQL, roleParamsList);
             }
         }
 
-        private OracleParameter[] createUserParamList(User usr) {
+        private OracleParameter[] createUserParamList(User usr)
+        {
             OracleParameter[] paramsList = new OracleParameter[6];
             paramsList[0] = DBHelper.mp("userId", usr.UserId);
             paramsList[1] = DBHelper.mp("fName", usr.FName);
@@ -105,9 +101,11 @@ namespace Agile.DAO {
 
             return paramsList;
         }
-        private void setUserRoles(User usr) {
+        private void setUserRoles(User usr)
+        {
             DataTable dt = DBHelper.SelectDataTable(User.FIND_USER_ROLES_BY_USER_ID, DBHelper.mp("userId", usr.UserId));
-            for (int i = 0; i < dt.Rows.Count; i++) {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
                 usr.Roles.Add((((DataRow)(dt.Rows[i]))["ROLE_ID"]).ToString());
             }
         }

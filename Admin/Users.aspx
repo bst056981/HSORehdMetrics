@@ -9,8 +9,7 @@
         <tr>
             <td rowspan="2" valign="top">
                 <asp:GridView ID="GridView1" runat="server" SkinID="igoogle-summer_paging" AutoGenerateColumns="False"
-                    DataKeyNames="USER_ID" DataSourceID="AllUsersDS" EmptyDataText="No Users Found"
-                    Width="850px">
+                    DataKeyNames="USER_ID" DataSourceID="AllUsersDS" EmptyDataText="No Users Found" Width="850px">
                     <Columns>
                         <asp:TemplateField HeaderText="ID" SortExpression="USER_ID">
                             <EditItemTemplate>
@@ -23,21 +22,8 @@
                         <asp:BoundField DataField="FULL_NAME" HeaderText="Name" SortExpression="FULL_NAME" />
                         <asp:BoundField DataField="PHONE" HeaderText="Phone" SortExpression="PHONE" />
                         <asp:BoundField DataField="EMAIL" HeaderText="eMail" SortExpression="EMAIL" />
-                        <asp:BoundField DataField="ROLE_NME" HeaderText="Role" SortExpression="ROLE_NME"
-                            HtmlEncode="False" />
+                        <asp:BoundField DataField="ROLE_NME" HeaderText="Role" SortExpression="ROLE_NME" HtmlEncode="False" />
                         <asp:BoundField DataField="ACTIVE" HeaderText="Active" SortExpression="ACTIVE" />
-                        <asp:TemplateField ShowHeader="False">
-                            <EditItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update"
-                                    Text="Update"></asp:LinkButton>
-                                <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel"
-                                    Text="Cancel"></asp:LinkButton>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" OnClick="DeleteBtn_Click"
-                                    Text="Delete" OnClientClick='return confirm("Are you sure you want to delete this user?");'></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
                 <div style="padding-top: 10px">
@@ -55,8 +41,7 @@
             </td>
         </tr>
     </table>
-    <cc1:ModalPopupExtender ID="mpeUser" BehaviorID="mdlPopup" runat="server" TargetControlID="btnAdd"
-        PopupControlID="pnlPopup" BackgroundCssClass="modalBackground" />
+    <cc1:ModalPopupExtender ID="mpeUser" BehaviorID="mdlPopup" runat="server" TargetControlID="btnAdd" PopupControlID="pnlPopup" BackgroundCssClass="modalBackground" />
     <asp:Panel ID="pnlPopup" runat="server" CssClass="popupPanel" Style="display: none;">
         <div class="inner">
             <h2>Add / Edit User</h2>
@@ -64,8 +49,7 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Label ID="LBLerror" runat="server" Text="" Font-Bold="true" Font-Size="Small"
-                                ForeColor="Red" Visible="false" />
+                            <asp:Label ID="LBLerror" runat="server" Text="" Font-Bold="true" Font-Size="Small" ForeColor="Red" Visible="false" />
                         </td>
                     </tr>
                     <tr>
@@ -85,8 +69,7 @@
                                         <td align="right">ID
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TXTuserId" runat="server" MaxLength="10" AutoPostBack="true" Width="125px"
-                                                OnTextChanged="TXTuserId_TextChanged" />
+                                            <asp:TextBox ID="TXTuserId" runat="server" MaxLength="10" AutoPostBack="true" Width="125px" OnTextChanged="TXTuserId_TextChanged" />
                                         </td>
                                     </tr>
                                 </asp:Panel>
@@ -135,17 +118,14 @@
                                     <td align="right" valign="top">Roles
                                     </td>
                                     <td>
-                                        <asp:CheckBoxList ID="CBLroles" runat="server" DataSourceID="roleDS" DataTextField="ROLE_NME"
-                                            DataValueField="ROLE_ID">
+                                        <asp:CheckBoxList ID="CBLroles" runat="server" DataSourceID="roleDS" DataTextField="ROLE_NME" DataValueField="ROLE_ID">
                                         </asp:CheckBoxList>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <asp:Button ID="BTNsubmit" runat="server" Text="Submit" OnClick="BTNsubmit_Click"
-                                            Width="80px" />
-                                        &nbsp;<asp:Button ID="BTNcancel" runat="server" Text="Cancel" OnClick="BTNcancel_Click"
-                                            Width="80px" />
+                                        <asp:Button ID="BTNsubmit" runat="server" Text="Submit" OnClick="BTNsubmit_Click" Width="80px" />
+                                        &nbsp;<asp:Button ID="BTNcancel" runat="server" Text="Cancel" OnClick="BTNcancel_Click" Width="80px" />
                                     </td>
                                 </tr>
                             </table>

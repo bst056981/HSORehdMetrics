@@ -2,14 +2,15 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
   <siteMapNode url="Default.aspx" title="Home"  description="Home">
     <siteMapNode title="Reports" description="Reports"  roles="SITE_ADMN,USER">
-      <siteMapNode url="Reports/MetricsReport.aspx" title="Metrics Report" />
+      <siteMapNode url="Reports/AddsDetail.aspx" title="Adds Detail" />
+      <siteMapNode url="Reports/CustomerDetail.aspx" title="Customer Detail" />
+      <siteMapNode url="Reports/DealerAmounts.aspx" title="Dealer Amounts" />
+      <siteMapNode url="Reports/DealerTotals.aspx" title="Dealer Totals" />
+      <siteMapNode url="Reports/OutsDetail.aspx" title="Outs Detail" />
+      <siteMapNode url="Reports/SecurityCustomerCount.aspx" title="Security Customer Count" />
     </siteMapNode>
-    <siteMapNode title="Data-Entry" description="Data-Entry" roles="SITE_ADMN">
-      <siteMapNode url="DataEntry/Metrics.aspx" title="Metrics"/>
-    </siteMapNode>   
     <siteMapNode title="Admin" roles="SITE_ADMN">
       <siteMapNode url="Admin/Users.aspx" title="Users"/>
-      <!--<siteMapNode url="Admin/AddRecordYears.aspx" title="Add New Year Records"/>-->
     </siteMapNode>
   </siteMapNode>
 </siteMap>

@@ -4,12 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Collections;
 
-/// <summary>
-/// Summary description for User
-/// </summary>
 namespace Agile.Domain
 {
-    public class User {
+    public class User
+    {
         private string _userId;
         private string _fName;
         private string _lName;
@@ -19,7 +17,8 @@ namespace Agile.Domain
 
         private ArrayList _roles;
 
-        public User() {
+        public User()
+        {
             this._roles = new ArrayList();
         }
         public string UserId { get { return _userId; } set { _userId = value; } }

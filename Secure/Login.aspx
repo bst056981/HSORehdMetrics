@@ -5,7 +5,7 @@
     <asp:MultiView ID="mv1" runat="server">
     <asp:View ID="vNotLoggedIn" runat="server">
         <div id="div1" runat="server">
-            <span style="font-family:Calibri;font-size:large;text-align:center" runat="server">HSO Metrics Login</span>
+            <span style="font-family:Calibri;font-size:large;text-align:center" runat="server">HSO EOM Login</span>
         </div>
         <div ID="div2" runat="server">
             <link ID="link1" runat="server" rel="shortcut icon" href="images/BSicon.ico" type="image/vnd.microsoft.icon" />
