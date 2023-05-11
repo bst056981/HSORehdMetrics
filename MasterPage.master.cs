@@ -13,15 +13,13 @@ using System.Web.Security;
 using System.Net;
 using System.Data;
 
-public partial class MasterPage : System.Web.UI.MasterPage
-{
-    protected void Page_Load(object sender, EventArgs e)
-    {
+public partial class MasterPage : System.Web.UI.MasterPage {
+    protected void Page_Load(object sender, EventArgs e) {
         if (!IsPostBack)
         {
             LITsiteName.Text = (WebConfigurationManager.AppSettings["environmentLabel"]) + (WebConfigurationManager.AppSettings["siteName"]);
             lblSiteName.Text = (WebConfigurationManager.AppSettings["environmentLabel"]) + (WebConfigurationManager.AppSettings["siteName"]);
-
+          
             lblUserInfo.Text = String.Empty;
 
             LOGO.Attributes.Add("title", Dns.GetHostName());
@@ -40,15 +38,38 @@ public partial class MasterPage : System.Web.UI.MasterPage
         //****************************************************************//
     }
 
-    protected void Logout_Click(object sender, EventArgs e)
-    {
+    protected void Logout_Click(object sender, EventArgs e) {
         Session.Abandon();
         FormsAuthentication.SignOut();
         Response.Redirect("~/Secure/Login.aspx?ReturnUrl=" + Request.Url.PathAndQuery.ToString());
     }
 
-    protected void Login_Click(object sender, EventArgs e)
-    {
+    protected void Login_Click(object sender, EventArgs e) {
         Response.Redirect("~/Secure/Login.aspx?ReturnUrl=" + Request.Url.PathAndQuery.ToString());
     }
+
+    //protected void setUserInfoLabel(String userId)
+    //{
+    //    UserService usrSrv = new UserImpl();
+    //    User usr = usrSrv.findUserById(userId);
+
+    //    if (usr.LName == null)
+    //    {
+    //        lblUserInfo.Text = userId + ": Guest";
+    //    }
+    //    else
+    //    {
+    //        String userInfo = usr.FName + " " + usr.LName + ": ";
+
+    //        DataTable dt = DBHelper.SelectDataTable(User.FIND_USER_ROLE_NAMES_BY_USER_ID, DBHelper.mp("userId", usr.UserId));
+    //        for (int i = 0; i < dt.Rows.Count; i++)
+    //        {
+    //            userInfo += (((DataRow)(dt.Rows[i]))["ROLE_NME"]).ToString() + ", ";
+    //        }
+
+    //        lblUserInfo.Text = userInfo.Substring(0, userInfo.Length - 2);
+
+    //        Session["UserInfo"] = lblUserInfo.Text;
+    //    }
+    //}
 }

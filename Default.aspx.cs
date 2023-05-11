@@ -8,15 +8,12 @@ using System.Web.Security;
 using System.Data;
 using Agile.Helper;
 
-public partial class _Default : System.Web.UI.Page
-{
-    protected void Page_Load(object sender, EventArgs e)
-    {
+public partial class _Default : System.Web.UI.Page {
+    protected void Page_Load(object sender, EventArgs e) {
+
     }
-    protected void Page_LoadComplete(object sender, EventArgs e)
-    {
-        if (Page.User.Identity.IsAuthenticated)
-        {
+    protected void Page_LoadComplete(object sender, EventArgs e) {
+        if (Page.User.Identity.IsAuthenticated) {
             Session["UserID"] = Page.User.Identity.Name.ToString();
         }
     }

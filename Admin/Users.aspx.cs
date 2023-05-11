@@ -18,6 +18,7 @@ public partial class Admin_Users : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
     }
     protected void LinkButton3_Click(object sender, EventArgs e)
     {
@@ -69,6 +70,21 @@ public partial class Admin_Users : System.Web.UI.Page
         GridView1.DataBind();
     }
 
+    protected void DeleteBtn_Click(object sender, EventArgs e)
+    {
+        string sessUserId = Page.User.Identity.Name.ToString();
+        string userId = "";
+        string activity = "DELETE";
+        LinkButton lb = sender as LinkButton;
+
+        GridViewRow row = lb.NamingContainer as GridViewRow;
+        userId = GridView1.DataKeys[row.RowIndex].Value.ToString();
+
+        UserService usrSrv = new UserImpl();
+        usrSrv.DocumentUserChange(sessUserId, userId, activity);
+        GridView1.DataBind();
+    }
+
     protected void BTNsubmit_Click(object sender, EventArgs e)
     {
         if (isValidData())
@@ -99,11 +115,14 @@ public partial class Admin_Users : System.Web.UI.Page
             {
                 activity = "ADD";
                 usrSrv.insertUser(usr);
+                usrSrv.DocumentUserChange(sessUserId, usr.UserId, activity);
             }
             else
             {
                 activity = "UPDATE";
+                usrSrv.DocumentUserChange(sessUserId, usr.UserId, activity);
                 usrSrv.updateUser(usr);
+                usrSrv.DocumentUserChange(sessUserId, usr.UserId, activity);
             }
             mpeUser.Hide();
             clearControls();
