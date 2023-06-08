@@ -928,62 +928,62 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             if (cntJan100800.ToString() != "0" && (cntJan101800.ToString() != "0"))
                             {
                                 calcDecimal = cntJan100800 / cntJan101800;
-                                cntJanTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJanTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntFeb100800.ToString() != "0" && (cntFeb101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntFeb100800 / cntFeb101800;
-                                cntFebTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntFebTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntMar100800.ToString() != "0" && (cntMar101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntMar100800 / cntMar101800;
-                                cntMarTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntMarTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntApr100800.ToString() != "0" && (cntApr101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntApr100800 / cntApr101800;
-                                cntAprTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntAprTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntMay100800.ToString() != "0" && (cntMay101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntMay100800 / cntMay101800;
-                                cntMayTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntMayTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntJun100800.ToString() != "0" && (cntJun101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntJun100800 / cntJun101800;
-                                cntJunTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJunTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntJul100800.ToString() != "0" && (cntJul101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntJul100800 / cntJul101800;
-                                cntJulTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJulTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntAug100800.ToString() != "0" && (cntAug101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntAug100800 / cntAug101800;
-                                cntAugTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntAugTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntSep100800.ToString() != "0" && (cntSep101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntSep100800 / cntSep101800;
-                                cntSepTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntSepTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntOct100800.ToString() != "0" && (cntOct101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntOct100800 / cntOct101800;
-                                cntOctTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntOctTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntNov100800.ToString() != "0" && (cntNov101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntNov100800 / cntNov101800;
-                                cntNovTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntNovTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntDec100800.ToString() != "0" && (cntDec101800.ToString() != "0"))
                             {
                                 calcDecimal = (decimal)cntDec100800 / cntDec101800;
-                                cntDecTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntDecTotalDecimal = Math.Round(calcDecimal, 3);
                             }
 
                             ytd1 = cntJan100800 + cntFeb100800 + cntMar100800 + cntApr100800 + cntMay100800 + cntJun100800 + cntJul100800 + cntAug100800 + cntSep100800 + cntOct100800 + cntNov100800 + cntDec100800;
@@ -993,13 +993,13 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             if (ytd1.ToString() != "0" && ytd2.ToString() != "0")
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
-                                cntYtdTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntYtdTotalDecimal = Math.Round(calcDecimal, 3);
                                 if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
                                     calcDecimal = (decimal)ave1 / ave2;
-                                    cntAveTotalDecimal = Math.Round(calcDecimal, 1);
+                                    cntAveTotalDecimal = Math.Round(calcDecimal, 3);
                                 }
                             }
 
@@ -1031,62 +1031,62 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             if (cntJan100900.ToString() != "0" && cntJan101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntJan100900 / cntJan101900;
-                                cntJanTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJanTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntFeb100900.ToString() != "0" && cntFeb101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntFeb100900 / cntFeb101900;
-                                cntFebTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntFebTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntMar100900.ToString() != "0" && cntMar101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntMar100900 / cntMar101900;
-                                cntMarTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntMarTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntApr100900.ToString() != "0" && cntApr101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntApr100900 / cntApr101900;
-                                cntAprTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntAprTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntMay100900.ToString() != "0" && cntMay101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntMay100900 / cntMay101900;
-                                cntMayTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntMayTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntJun100900.ToString() != "0" && cntJun101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntJun100900 / cntJun101900;
-                                cntJunTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJunTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntJul100900.ToString() != "0" && cntJul101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntJul100900 / cntJul101900;
-                                cntJulTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJulTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntAug100900.ToString() != "0" && cntAug101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntAug100900 / cntAug101900;
-                                cntAugTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntAugTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntSep100900.ToString() != "0" && cntSep101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntSep100900 / cntSep101900;
-                                cntSepTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntSepTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntOct100900.ToString() != "0" && cntOct101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntOct100900 / cntOct101900;
-                                cntOctTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntOctTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntNov100900.ToString() != "0" && cntNov101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntNov100900 / cntNov101900;
-                                cntNovTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntNovTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntDec100900.ToString() != "0" && cntDec101900.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntDec100900 / cntDec101900;
-                                cntDecTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntDecTotalDecimal = Math.Round(calcDecimal, 3);
                             }
 
                             ytd1 = cntJan100900 + cntFeb100900 + cntMar100900 + cntApr100900 + cntMay100900 + cntJun100900 + cntJul100900 + cntAug100900 + cntSep100900 + cntOct100900 + cntNov100900 + cntDec100900;
@@ -1096,13 +1096,13 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             if (ytd1.ToString() != "0" && ytd2.ToString() != "0")
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
-                                cntYtdTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntYtdTotalDecimal = Math.Round(calcDecimal, 3);
                                 if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
                                     calcDecimal = (decimal)ave1 / ave2;
-                                    cntAveTotalDecimal = Math.Round(calcDecimal, 1);
+                                    cntAveTotalDecimal = Math.Round(calcDecimal, 3);
                                 }
                             }
 
@@ -1134,62 +1134,62 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             if (cntJan101000.ToString() != "0" && cntJan102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntJan101000 / cntJan102000;
-                                cntJanTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJanTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntFeb101000.ToString() != "0" && cntFeb102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntFeb101000 / cntFeb102000;
-                                cntFebTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntFebTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntMar101000.ToString() != "0" && cntMar102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntMar101000 / cntMar102000;
-                                cntMarTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntMarTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntApr101000.ToString() != "0" && cntApr102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntApr101000 / cntApr102000;
-                                cntAprTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntAprTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntMay101000.ToString() != "0" && cntMay102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntMay101000 / cntMay102000;
-                                cntMayTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntMayTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntJun101000.ToString() != "0" && cntJun102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntJun101000 / cntJun102000;
-                                cntJunTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJunTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntJul101000.ToString() != "0" && cntJul102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntJul101000 / cntJul102000;
-                                cntJulTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJulTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntAug101000.ToString() != "0" && cntAug102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntAug101000 / cntAug102000;
-                                cntAugTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntAugTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntSep101000.ToString() != "0" && cntSep102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntSep101000 / cntSep102000;
-                                cntSepTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntSepTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntOct101000.ToString() != "0" && cntOct102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntOct101000 / cntOct102000;
-                                cntOctTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntOctTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntNov101000.ToString() != "0" && cntNov102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntNov101000 / cntNov102000;
-                                cntNovTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntNovTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntDec101000.ToString() != "0" && cntDec102000.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntDec101000 / cntDec102000;
-                                cntDecTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntDecTotalDecimal = Math.Round(calcDecimal, 3);
                             }
 
                             ytd1 = cntJan101000 + cntFeb101000 + cntMar101000 + cntApr101000 + cntMay101000 + cntJun101000 + cntJul101000 + cntAug101000 + cntSep101000 + cntOct101000 + cntNov101000 + cntDec101000;
@@ -1199,13 +1199,13 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             if (ytd1.ToString() != "0" && ytd2.ToString() != "0")
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
-                                cntYtdTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntYtdTotalDecimal = Math.Round(calcDecimal, 3);
                                 if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
                                     calcDecimal = (decimal)ave1 / ave2;
-                                    cntAveTotalDecimal = Math.Round(calcDecimal, 1);
+                                    cntAveTotalDecimal = Math.Round(calcDecimal, 3);
                                 }
                             }
 
@@ -1237,62 +1237,62 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             if (cntJan101100.ToString() != "0" && cntJan102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntJan101100 / cntJan102100;
-                                cntJanTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJanTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntFeb101100.ToString() != "0" && cntFeb102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntFeb101100 / cntFeb102100;
-                                cntFebTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntFebTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntMar101100.ToString() != "0" && cntMar102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntMar101100 / cntMar102100;
-                                cntMarTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntMarTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntApr101100.ToString() != "0" && cntApr102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntApr101100 / cntApr102100;
-                                cntAprTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntAprTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntMay101100.ToString() != "0" && cntMay102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntMay101100 / cntMay102100;
-                                cntMayTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntMayTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntJun101100.ToString() != "0" && cntJun102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntJun101100 / cntJun102100;
-                                cntJunTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJunTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntJul101100.ToString() != "0" && cntJul102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntJul101100 / cntJul102100;
-                                cntJulTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntJulTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntAug101100.ToString() != "0" && cntAug102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntAug101100 / cntAug102100;
-                                cntAugTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntAugTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntSep101100.ToString() != "0" && cntSep102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntSep101100 / cntSep102100;
-                                cntSepTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntSepTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntOct101100.ToString() != "0" && cntOct102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntOct101100 / cntOct102100;
-                                cntOctTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntOctTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntNov101100.ToString() != "0" && cntNov102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntNov101100 / cntNov102100;
-                                cntNovTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntNovTotalDecimal = Math.Round(calcDecimal, 3);
                             }
                             if (cntDec101100.ToString() != "0" && cntDec102100.ToString() != "0")
                             {
                                 calcDecimal = (decimal)cntDec101100 / cntDec102100;
-                                cntDecTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntDecTotalDecimal = Math.Round(calcDecimal, 3);
                             }
 
                             ytd1 = cntJan101100 + cntFeb101100 + cntMar101100 + cntApr101100 + cntMay101100 + cntJun101100 + cntJul101100 + cntAug101100 + cntSep101100 + cntOct101100 + cntNov101100 + cntDec101100;
@@ -1302,13 +1302,13 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             if (ytd1.ToString() != "0" && ytd2.ToString() != "0")
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
-                                cntYtdTotalDecimal = Math.Round(calcDecimal, 1);
+                                cntYtdTotalDecimal = Math.Round(calcDecimal, 3);
                                 if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
                                     calcDecimal = (decimal)ave1 / ave2;
-                                    cntAveTotalDecimal = Math.Round(calcDecimal, 1);
+                                    cntAveTotalDecimal = Math.Round(calcDecimal, 3);
                                 }
                             }
 
