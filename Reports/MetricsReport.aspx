@@ -39,8 +39,8 @@
             <td valign="top">
                 <asp:UpdatePanel runat="server" ID="UpdatePanel1">
                     <ContentTemplate>
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True" DataKeyNames="METRICS_ID" Width="969px" Visible="false"
-                            DataSourceID="maintDS" AllowSorting="False" OnRowDataBound="Gridview1_RowDataBound" SkinID="igoogle-summer">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True" DataKeyNames="METRICS_ID" Width="1269px" Visible="false" RowStyle-HorizontalAlign="Center"  Style="margin-left: -200px"
+                            DataSourceID="maintDS" AllowSorting="False" OnRowDataBound="Gridview1_RowDataBound" SkinID="igoogle-summer" HeaderStyle-HorizontalAlign="Center" > 
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -49,7 +49,7 @@
     </table>
     <asp:SqlDataSource ID="maintDS" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString%>"
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
-        SelectCommand="SELECT  * FROM METRICS_VW ORDER BY METRICS_ID"></asp:SqlDataSource>
+        SelectCommand="SELECT * FROM METRICS_VW ORDER BY METRICS_ID"></asp:SqlDataSource>
     <asp:SqlDataSource ID="dsExport" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
         SelectCommand="SELECT  * FROM METRICS_VW ORDER BY METRICS_ID"></asp:SqlDataSource>

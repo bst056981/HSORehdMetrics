@@ -371,7 +371,6 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
     {
         int i = 0;
         MetricsImpl mvi = new MetricsImpl();
-        //var lastrow = GridView.Rows[GridView.Rows.Count - 1];
 
         var calc = "";
         foreach (GridViewRow row in GridView.Rows)
@@ -409,17 +408,19 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                     TextBox decBox = row.FindControl("txtDec") as TextBox;
                     mv.Dec = decBox.Text;
 
-                    if (String.IsNullOrEmpty(decBox.Text)) { months = 11; }
-                    if (String.IsNullOrEmpty(novBox.Text)) { months = 10; }
-                    if (String.IsNullOrEmpty(octBox.Text)) { months = 9; }
-                    if (String.IsNullOrEmpty(sepBox.Text)) { months = 8; }
-                    if (String.IsNullOrEmpty(augBox.Text)) { months = 7; }
-                    if (String.IsNullOrEmpty(julBox.Text)) { months = 6; }
-                    if (String.IsNullOrEmpty(junBox.Text)) { months = 5; }
-                    if (String.IsNullOrEmpty(mayBox.Text)) { months = 4; }
-                    if (String.IsNullOrEmpty(aprBox.Text)) { months = 3; }
-                    if (String.IsNullOrEmpty(marBox.Text)) { months = 2; }
-                    if (String.IsNullOrEmpty(febBox.Text)) { months = 1; }
+                    months = 0;
+                    if (!String.IsNullOrEmpty(decBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(novBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(octBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(sepBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(augBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(julBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(junBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(mayBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(aprBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(marBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(febBox.Text)) { months = months + 1; }
+                    if (!String.IsNullOrEmpty(janBox.Text)) { months = months + 1; }
 
                     cntJan = String.IsNullOrEmpty(janBox.Text) ? 0 : Convert.ToDecimal(janBox.Text);
                     cntFeb = String.IsNullOrEmpty(febBox.Text) ? 0 : Convert.ToDecimal(febBox.Text);
@@ -438,16 +439,54 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                     mv.Ytd = ytd.ToString();
                     if (!String.IsNullOrEmpty(ytd.ToString()))
                     {
-                        if (GridView.DataKeys[i].Values[1].ToString() == "109100")
+                        switch (GridView.DataKeys[i].Values[1].ToString())
                         {
-                            ave = (decimal)Math.Round(((decimal)ytd / (decimal)months), 2);
-                            mv.Ytd = "";
+                            case "104200":
+                            case "104500":
+                            case "104800":
+                            case "105100":
+                            case "109100":
+                            case "109200":
+                            case "109600":
+                            case "109700":
+                                if (months > 0)
+                                {
+                                    ave = (decimal)Math.Round(((decimal)ytd / (decimal)months), 3);
+                                    mv.Ave = ave.ToString();
+                                }
+                                else { mv.Ave = "0"; }
+                                break;
+                            case "105400":
+                            case "109900":
+                                if (months > 0)
+                                {
+                                    ave = (decimal)Math.Round(((decimal)ytd / (decimal)months), 2);
+                                    mv.Ave = ave.ToString();
+                                }
+                                break;
+                            case "110000":
+                            case "110800":
+                            case "110900":
+                            case "111000":
+                            case "111100":
+                            case "111200":
+                                if (months > 0)
+                                {
+                                    ave = (decimal)Math.Round(((decimal)ytd / (decimal)months), 2);
+                                    mv.Ave = ave.ToString("C2");
+                                    mv.Ytd = ytd.ToString("C2");
+                                }
+                                else { mv.Ave = "0"; }
+                                break;
+                            default:
+                                if (months > 0)
+                                {
+                                    ave = (decimal)Math.Round(((decimal)ytd / (decimal)months), MidpointRounding.AwayFromZero);
+                                    mv.Ave = ave.ToString();
+                                }
+                                else { mv.Ave = "0"; }
+                                break;
                         }
-                        else
-                        {
-                            ave = (decimal)Math.Round((decimal)ytd / (decimal)months);
-                        }
-                        mv.Ave = ave.ToString();
                     }
                     else { mv.Ave = "0"; }
 
@@ -470,8 +509,9 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "108800":
                         case "109100":
                         case "109300":
-                        case "110200":
-                        case "110300":
+                        case "110700":
+                        case "111300":
+                        case "111700":
                             cntJan1 = cntJan;
                             cntFeb1 = cntFeb;
                             cntMar1 = cntMar;
@@ -529,8 +569,9 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "108500":
                         case "108900":
                         case "109400":
-                        case "109700":
-                        case "110400":
+                        case "109800":
+                        case "111400":
+                        case "111800":
                             cntJan2 = cntJan;
                             cntFeb2 = cntFeb;
                             cntMar2 = cntMar;
@@ -585,7 +626,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "106700":
                         case "108000":
                         case "108600":
-                        case "109800":
+                        case "110100":
                             cntJan3 = cntJan;
                             cntFeb3 = cntFeb;
                             cntMar3 = cntMar;
@@ -621,7 +662,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "106300":
                         case "106800":
                         case "108100":
-                        case "109900":
+                        case "110300":
                             cntJan4 = cntJan;
                             cntFeb4 = cntFeb;
                             cntMar4 = cntMar;
@@ -711,12 +752,12 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntDecTotal = cntDec1 + cntDec2 + cntDec3;
                             cntYtdTotal = cntJanTotal + cntFebTotal + cntMarTotal + cntAprTotal + cntMayTotal + cntJunTotal + cntJulTotal + cntAugTotal + cntSepTotal + cntOctTotal + cntNovTotal + cntDecTotal;
 
-                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtdTotal / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             string sql = "UPDATE METRICS SET JAN = '" + cntJanTotal + "', FEB = '" + cntFebTotal + "', MAR = '" + cntMarTotal + "', APR = '" + cntAprTotal + "', MAY = '" + cntMayTotal + "', Jun = '" + cntJunTotal + "', JUL = '" + cntJulTotal + "', AUG = '" + cntAugTotal + "', SEP = '" + cntSepTotal + "', OCT = '" + cntOctTotal + "', NOV = '" + cntNovTotal + "', DEC = '" + cntDecTotal + "', YTD = '" + cntYtdTotal + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
 
@@ -751,12 +792,12 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntNovTotal = cntNov4 + cntNov5 + cntNov6;
                             cntDecTotal = cntDec4 + cntDec5 + cntDec6;
                             cntYtdTotal = cntJanTotal + cntFebTotal + cntMarTotal + cntAprTotal + cntMayTotal + cntJunTotal + cntJulTotal + cntAugTotal + cntSepTotal + cntOctTotal + cntNovTotal + cntDecTotal;
-                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtdTotal / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJanTotal + "', FEB = '" + cntFebTotal + "', MAR = '" + cntMarTotal + "', APR = '" + cntAprTotal + "', MAY = '" + cntMayTotal + "', Jun = '" + cntJunTotal + "', JUL = '" + cntJulTotal + "', AUG = '" + cntAugTotal + "', SEP = '" + cntSepTotal + "', OCT = '" + cntOctTotal + "', NOV = '" + cntNovTotal + "', DEC = '" + cntDecTotal + "', YTD = '" + cntYtdTotal + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = 0;
@@ -775,12 +816,12 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntNovGrandTotal = cntNovTotal = cntNov100800 = cntNov1 - cntNov4;
                             cntDecGrandTotal = cntDecTotal = cntDec100800 = cntDec1 - cntDec4;
                             cntYtdGrandTotal = cntYtdTotal = cntYtd100800 = cntJanTotal + cntFebTotal + cntMarTotal + cntAprTotal + cntMayTotal + cntJunTotal + cntJulTotal + cntAugTotal + cntSepTotal + cntOctTotal + cntNovTotal + cntDecTotal;
-                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtdTotal / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJanTotal + "', FEB = '" + cntFebTotal + "', MAR = '" + cntMarTotal + "', APR = '" + cntAprTotal + "', MAY = '" + cntMayTotal + "', Jun = '" + cntJunTotal + "', JUL = '" + cntJulTotal + "', AUG = '" + cntAugTotal + "', SEP = '" + cntSepTotal + "', OCT = '" + cntOctTotal + "', NOV = '" + cntNovTotal + "', DEC = '" + cntDecTotal + "', YTD = '" + cntYtdTotal + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = 0;
@@ -799,12 +840,12 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntNovTotal = cntNov100900 = cntNov2 - cntNov5;
                             cntDecTotal = cntDec100900 = cntDec2 - cntDec5;
                             cntYtdTotal = cntYtd100900 = cntJanTotal + cntFebTotal + cntMarTotal + cntAprTotal + cntMayTotal + cntJunTotal + cntJulTotal + cntAugTotal + cntSepTotal + cntOctTotal + cntNovTotal + cntDecTotal;
-                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtdTotal / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             cntJanGrandTotal = cntJanGrandTotal + cntJanTotal;
                             cntFebGrandTotal = cntFebGrandTotal + cntFebTotal;
                             cntMarGrandTotal = cntMarGrandTotal + cntMarTotal;
@@ -837,12 +878,12 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntNovTotal = cntNov101000 = cntNov3 - cntNov6;
                             cntDecTotal = cntDec101000 = cntDec3 + cntDec6;
                             cntYtdTotal = cntYtd101000 = cntJanTotal + cntFebTotal + cntMarTotal + cntAprTotal + cntMayTotal + cntJunTotal + cntJulTotal + cntAugTotal + cntSepTotal + cntOctTotal + cntNovTotal + cntDecTotal;
-                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtdTotal / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             cntJanGrandTotal = cntJan101100 = cntJanGrandTotal + cntJanTotal;
                             cntFebGrandTotal = cntFeb101100 = cntFebGrandTotal + cntFebTotal;
                             cntMarGrandTotal = cntMar101100 = cntMarGrandTotal + cntMarTotal;
@@ -861,12 +902,12 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = 0;
                             break;
                         case "101100":
-                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtdGrandTotal / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJanGrandTotal + "', FEB = '" + cntFebGrandTotal + "', MAR = '" + cntMarGrandTotal + "', APR = '" + cntAprGrandTotal + "', MAY = '" + cntMayGrandTotal + "', Jun = '" + cntJunGrandTotal + "', JUL = '" + cntJulGrandTotal + "', AUG = '" + cntAugGrandTotal + "', SEP = '" + cntSepGrandTotal + "', OCT = '" + cntOctGrandTotal + "', NOV = '" + cntNovGrandTotal + "', DEC = '" + cntDecGrandTotal + "', YTD = '" + cntYtdGrandTotal + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = cntJan1 = cntJan2 = cntJan3 = cntJan4 = cntJan5 = cntJan6 = cntJan7 = cntFeb1 = cntFeb2 = cntFeb3 = cntFeb4 = cntFeb5 = cntFeb6 = cntFeb7 =
@@ -876,7 +917,8 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "102900":
                         case "106400":
                         case "107000":
-                        case "110500":
+                        case "111500":
+                        case "111900":
                             cntJanTotal = cntJan1 + cntJan2 + cntJan3 + cntJan4 + cntJan5 + cntJan6 + cntJan7;
                             cntFebTotal = cntFeb1 + cntFeb2 + cntFeb3 + cntFeb4 + cntFeb5 + cntFeb6 + cntFeb7;
                             cntMarTotal = cntMar1 + cntMar2 + cntMar3 + cntMar4 + cntMar5 + cntMar6 + cntMar7;
@@ -891,12 +933,12 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntDecTotal = cntDec1 + cntDec2 + cntDec3 + cntDec4 + cntDec5 + cntDec6 + cntDec7;
                             cntYtdTotal = cntJanTotal + cntFebTotal + cntMarTotal + cntAprTotal + cntMayTotal + cntJunTotal + cntJulTotal + cntAugTotal + cntSepTotal + cntOctTotal + cntNovTotal + cntDecTotal;
 
-                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtdTotal / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJanTotal + "', FEB = '" + cntFebTotal + "', MAR = '" + cntMarTotal + "', APR = '" + cntAprTotal + "', MAY = '" + cntMayTotal + "', Jun = '" + cntJunTotal + "', JUL = '" + cntJulTotal + "', AUG = '" + cntAugTotal + "', SEP = '" + cntSepTotal + "', OCT = '" + cntOctTotal + "', NOV = '" + cntNovTotal + "', DEC = '" + cntDecTotal + "', YTD = '" + cntYtdTotal + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = cntJan1 = cntJan2 = cntJan3 = cntJan4 = cntJan5 = cntJan6 = cntJan7 = cntFeb1 = cntFeb2 = cntFeb3 = cntFeb4 = cntFeb5 = cntFeb6 = cntFeb7 =
@@ -904,22 +946,22 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntAug1 = cntAug2 = cntAug3 = cntAug4 = cntAug5 = cntAug6 = cntAug7 = cntSep1 = cntSep2 = cntSep3 = cntSep4 = cntSep5 = cntSep6 = cntSep7 = cntOct1 = cntOct2 = cntOct3 = cntOct4 = cntOct5 = cntOct6 = cntOct7 = cntNov1 = cntNov2 = cntNov3 = cntNov4 = cntNov5 = cntNov6 = cntNov7 = cntDec1 = cntDec2 = cntDec3 = cntDec4 = cntDec5 = cntDec = cntDec7 = 0;
                             break;
                         case "104000":
-                            if (!String.IsNullOrEmpty(cntYtd101800.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtd101800.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtd101800 / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJan101800 + "', FEB = '" + cntFeb101800 + "', MAR = '" + cntMar101800 + "', APR = '" + cntApr101800 + "', MAY = '" + cntMay101800 + "', Jun = '" + cntJun101800 + "', JUL = '" + cntJul101800 + "', AUG = '" + cntAug101800 + "', SEP = '" + cntSep101800 + "', OCT = '" + cntOct101800 + "', NOV = '" + cntNov101800 + "', DEC = '" + cntDec101800 + "', YTD = '" + cntYtd101800 + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             break;
                         case "104100":
-                            if (!String.IsNullOrEmpty(cntYtd100800.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtd100800.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtd100800 / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJan100800 + "', FEB = '" + cntFeb100800 + "', MAR = '" + cntMar100800 + "', APR = '" + cntApr100800 + "', MAY = '" + cntMay100800 + "', Jun = '" + cntJun100800 + "', JUL = '" + cntJul100800 + "', AUG = '" + cntAug100800 + "', SEP = '" + cntSep100800 + "', OCT = '" + cntOct100800 + "', NOV = '" + cntNov100800 + "', DEC = '" + cntDec100800 + "', YTD = '" + cntYtd100800 + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             break;
@@ -994,7 +1036,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
                                 cntYtdTotalDecimal = Math.Round(calcDecimal, 3);
-                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
+                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()) && months > 0)
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
@@ -1007,22 +1049,22 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             DBHelper.Execute(sql);
                             break;
                         case "104300":
-                            if (!String.IsNullOrEmpty(cntYtd101900.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtd101900.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtd101900 / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJan101900 + "', FEB = '" + cntFeb101900 + "', MAR = '" + cntMar101900 + "', APR = '" + cntApr101900 + "', MAY = '" + cntMay101900 + "', Jun = '" + cntJun101900 + "', JUL = '" + cntJul101900 + "', AUG = '" + cntAug101900 + "', SEP = '" + cntSep101900 + "', OCT = '" + cntOct101900 + "', NOV = '" + cntNov101900 + "', DEC = '" + cntDec101900 + "', YTD = '" + cntYtd101900 + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             break;
                         case "104400":
-                            if (!String.IsNullOrEmpty(cntYtd100900.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtd100900.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtd100900 / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJan100900 + "', FEB = '" + cntFeb100900 + "', MAR = '" + cntMar100900 + "', APR = '" + cntApr100900 + "', MAY = '" + cntMay100900 + "', Jun = '" + cntJun100900 + "', JUL = '" + cntJul100900 + "', AUG = '" + cntAug100900 + "', SEP = '" + cntSep100900 + "', OCT = '" + cntOct100900 + "', NOV = '" + cntNov100900 + "', DEC = '" + cntDec100900 + "', YTD = '" + cntYtd100900 + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             break;
@@ -1097,7 +1139,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
                                 cntYtdTotalDecimal = Math.Round(calcDecimal, 3);
-                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
+                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()) && months > 0)
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
@@ -1110,22 +1152,22 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             DBHelper.Execute(sql);
                             break;
                         case "104600":
-                            if (!String.IsNullOrEmpty(cntYtd102000.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtd102000.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtd102000 / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJan102000 + "', FEB = '" + cntFeb102000 + "', MAR = '" + cntMar102000 + "', APR = '" + cntApr102000 + "', MAY = '" + cntMay102000 + "', Jun = '" + cntJun102000 + "', JUL = '" + cntJul102000 + "', AUG = '" + cntAug102000 + "', SEP = '" + cntSep102000 + "', OCT = '" + cntOct102000 + "', NOV = '" + cntNov102000 + "', DEC = '" + cntDec102000 + "', YTD = '" + cntYtd102000 + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             break;
                         case "104700":
-                            if (!String.IsNullOrEmpty(cntYtd101000.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtd101000.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtd101000 / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJan101000 + "', FEB = '" + cntFeb101000 + "', MAR = '" + cntMar101000 + "', APR = '" + cntApr101000 + "', MAY = '" + cntMay101000 + "', Jun = '" + cntJun101000 + "', JUL = '" + cntJul101000 + "', AUG = '" + cntAug101000 + "', SEP = '" + cntSep101000 + "', OCT = '" + cntOct101000 + "', NOV = '" + cntNov101000 + "', DEC = '" + cntDec101000 + "', YTD = '" + cntYtd101000 + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             break;
@@ -1200,7 +1242,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
                                 cntYtdTotalDecimal = Math.Round(calcDecimal, 3);
-                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
+                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()) && months > 0)
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
@@ -1213,22 +1255,22 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             DBHelper.Execute(sql);
                             break;
                         case "104900":
-                            if (!String.IsNullOrEmpty(cntYtd102100.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtd102100.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtd102100 / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJan102100 + "', FEB = '" + cntFeb102100 + "', MAR = '" + cntMar102100 + "', APR = '" + cntApr102100 + "', MAY = '" + cntMay102100 + "', Jun = '" + cntJun102100 + "', JUL = '" + cntJul102100 + "', AUG = '" + cntAug102100 + "', SEP = '" + cntSep102100 + "', OCT = '" + cntOct102100 + "', NOV = '" + cntNov102100 + "', DEC = '" + cntDec102100 + "', YTD = '" + cntYtd102100 + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             break;
                         case "105000":
-                            if (!String.IsNullOrEmpty(cntYtd101100.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtd101100.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtd101100 / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJan101100 + "', FEB = '" + cntFeb101100 + "', MAR = '" + cntMar101100 + "', APR = '" + cntApr101100 + "', MAY = '" + cntMay101100 + "', Jun = '" + cntJun101100 + "', JUL = '" + cntJul101100 + "', AUG = '" + cntAug101100 + "', SEP = '" + cntSep101100 + "', OCT = '" + cntOct101100 + "', NOV = '" + cntNov101100 + "', DEC = '" + cntDec101100 + "', YTD = '" + cntYtd101100 + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             break;
@@ -1303,7 +1345,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
                                 cntYtdTotalDecimal = Math.Round(calcDecimal, 3);
-                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
+                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()) && months > 0)
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
@@ -1386,7 +1428,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
                                 cntYtdTotalDecimal = Math.Round(calcDecimal, 2);
-                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
+                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()) && months > 0)
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
@@ -1469,7 +1511,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             {
                                 calcDecimal = (decimal)ytd1 / ytd2;
                                 cntYtdTotalDecimal = Math.Round(calcDecimal, 2);
-                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
+                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()) && months > 0)
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
@@ -1552,7 +1594,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             {
                                 calcDecimal = (decimal)ytd3 / ytd1;
                                 cntYtdTotalDecimal = Math.Round(calcDecimal, 2);
-                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd3.ToString()))
+                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd3.ToString()) && months > 0)
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd3 / (decimal)months);
@@ -1637,7 +1679,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             {
                                 calcDecimal = (decimal)ytd2 / ytd1;
                                 cntYtdTotalDecimal = Math.Round(calcDecimal, 2);
-                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()))
+                                if (!String.IsNullOrEmpty(ytd1.ToString()) && !String.IsNullOrEmpty(ytd2.ToString()) && months > 0)
                                 {
                                     ave1 = (decimal)Math.Round((decimal)ytd1 / (decimal)months);
                                     ave2 = (decimal)Math.Round((decimal)ytd2 / (decimal)months);
@@ -1650,7 +1692,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = 0;
                             break;
-                        case "110000":
+                        case "110400":
                             cntJanTotal = cntJan3 + cntJan4;
                             cntFebTotal = cntFeb3 + cntFeb4;
                             cntMarTotal = cntMar3 + cntMar4;
@@ -1665,12 +1707,12 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntDecTotal = cntDec3 + cntDec4;
                             cntYtdTotal = cntJanTotal + cntFebTotal + cntMarTotal + cntAprTotal + cntMayTotal + cntJunTotal + cntJulTotal + cntAugTotal + cntSepTotal + cntOctTotal + cntNovTotal + cntDecTotal;
 
-                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()))
+                            if (!String.IsNullOrEmpty(cntYtdTotal.ToString()) && months > 0)
                             {
                                 ave = (decimal)Math.Round((decimal)cntYtdTotal / (decimal)months);
                                 mv.Ave = ave.ToString();
                             }
-                            else { mv.Ave = "0"; }
+                            else { mv.Ave = ""; }
                             sql = "UPDATE METRICS SET JAN = '" + cntJanTotal + "', FEB = '" + cntFebTotal + "', MAR = '" + cntMarTotal + "', APR = '" + cntAprTotal + "', MAY = '" + cntMayTotal + "', Jun = '" + cntJunTotal + "', JUL = '" + cntJulTotal + "', AUG = '" + cntAugTotal + "', SEP = '" + cntSepTotal + "', OCT = '" + cntOctTotal + "', NOV = '" + cntNovTotal + "', DEC = '" + cntDecTotal + "', YTD = '" + cntYtdTotal + "', AVE = '" + mv.Ave + "' WHERE ID = '" + GridView.DataKeys[i].Values[0].ToString() + "'";
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = cntJan1 = cntJan2 = cntJan3 = cntJan4 = cntJan5 = cntJan6 = cntJan7 = cntFeb1 = cntFeb2 = cntFeb3 = cntFeb4 = cntFeb5 = cntFeb6 = cntFeb7 =
@@ -1690,6 +1732,25 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
     {
         DataView dv = (DataView)dsCountExportAll.Select(DataSourceSelectArguments.Empty);
         DataTable dt = (DataTable)dv.ToTable();
+
+
+
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            if (dt.Rows[i][0].ToString() == "110000" || dt.Rows[i][0].ToString() == "110800" || dt.Rows[i][0].ToString() == "110900" || dt.Rows[i][0].ToString() == "111000" || dt.Rows[i][0].ToString() == "111100" || dt.Rows[i][0].ToString() == "111200")
+            {
+                for (int z = 3; z < 15; z++)
+                {
+                    if (!String.IsNullOrEmpty(dt.Rows[i][z].ToString()))
+                    {
+                        dt.Rows[i][z] = string.Format("{0:C2}", Convert.ToDecimal(dt.Rows[i][z].ToString()));
+                    }
+                }
+            }
+        }
+
+        dt.Columns.Remove("METRICS_ID");
+
         Excel.ExportToExcelCenter(dt, "Metrics Report");
     }
 }

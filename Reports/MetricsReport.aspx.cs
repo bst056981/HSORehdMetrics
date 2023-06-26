@@ -21,6 +21,7 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
     string endyy = "";
     string firstTime = "Y";
     int monthCnt = 0;
+    int months = 0;
     int yearCnt = 0;
     int startDt = 0;
     int endDt = 0;
@@ -35,6 +36,7 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
     decimal tot = 0;
     decimal totSurveyRound = 0;
     decimal calAve = 0;
+    decimal EnvironmentalAlarms = 0;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -48,6 +50,8 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
     protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         GridView1.Visible = true;
+
+        e.Row.Cells[0].Visible = false;
 
         startyy = ddlStartDate.SelectedValue.Substring(0, 4);
         endyy = ddlEndDate.SelectedValue.Substring(0, 4);
@@ -112,10 +116,21 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                 if (!String.IsNullOrEmpty(e.Row.Cells[i].Text) && e.Row.Cells[i].Text != "&nbsp;")
                 {
                     tot = tot + Convert.ToDecimal(e.Row.Cells[i].Text);
-                    if (e.Row.Cells[2].Text == "Likeliness to Recommend")
+                    monthCnt = monthCnt + 1;
+
+                    // display dollar format for month detail amounts
+                    switch (e.Row.Cells[0].Text)
                     {
-                        tot = 0;
-                        totSurveyRound = totSurveyRound + Convert.ToDecimal(e.Row.Cells[i].Text);
+                        case "110000":
+                        case "110800":
+                        case "110900":
+                        case "111000":
+                        case "111100":
+                        case "111200":
+                            e.Row.Cells[i].Text = string.Format("{0:C2}", Convert.ToDecimal(e.Row.Cells[i].Text));
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
@@ -124,43 +139,95 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             if (((System.Web.UI.WebControls.BoundField)((DataControlFieldCell)e.Row.Cells[51]).ContainingField).DataField == "TOTAL")
-            {               
-                if (e.Row.Cells[2].Text == "Likeliness to Recommend")
+            {
+                e.Row.Cells[51].Text = tot.ToString();
+
+                // display dollar format for total detail amounts 
+                switch (e.Row.Cells[0].Text)
                 {
-                    e.Row.Cells[51].Text = "";
-                }
-                else
-                {
-                    e.Row.Cells[51].Text = tot.ToString();
+                    case "110000":
+                    case "110800":
+                    case "110900":
+                    case "111000":
+                    case "111100":
+                    case "111200":
+                        e.Row.Cells[51].Text = string.Format("{0:C2}", Convert.ToDecimal(e.Row.Cells[51].Text));
+                        break;
+                    default:
+                        break;
                 }
             }
 
             if (((System.Web.UI.WebControls.BoundField)((DataControlFieldCell)e.Row.Cells[52]).ContainingField).DataField == "AVE")
             {
-                if (e.Row.Cells[2].Text == "Likeliness to Recommend" || e.Row.Cells[2].Text == "REHD likeliness to Recommend")
+                if (monthCnt > 0)
                 {
-                    calAve = Math.Round((totSurveyRound / monthCnt), 2);
-                }
-                else
-                {
-                    if (e.Row.Cells[2].Text.Contains("Attrition %"))
+                    switch (e.Row.Cells[0].Text)
                     {
-                        calAve = Math.Round((tot / monthCnt), 1);
+                        case "104200":
+                        case "104500":
+                        case "104800":
+                        case "105100":
+                        case "109100":
+                        case "109200":
+                        case "109600":
+                        case "109700":
+                            if (monthCnt > 0)
+                            {
+                                calAve = Math.Round((tot / monthCnt), 3);
+                                e.Row.Cells[52].Text = calAve.ToString();
+                            }
+                            break;
+                        case "105400":
+                        case "109000":
+                        case "109500":
+                        case "109900":
+                            if (monthCnt > 0)
+                            {
+                                calAve = Math.Round((tot / monthCnt), 2);
+                                e.Row.Cells[52].Text = calAve.ToString();
+                            }
+                            break;
+                        // display dollar format for average detail amounts
+                        case "110000":
+                        case "110800":
+                        case "110900":
+                        case "111000":
+                        case "111100":
+                        case "111200":
+                            if (monthCnt > 0)
+                            {
+                                calAve = Math.Round((tot / monthCnt), 2);
+                                e.Row.Cells[52].Text = calAve.ToString("C2");
+                            }
+                            break;
+                        case "111700":
+                        case "111800":
+                            if (monthCnt > 0)
+                            {
+                                calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt, MidpointRounding.AwayFromZero);
+                                e.Row.Cells[52].Text = calAve.ToString();
+                                EnvironmentalAlarms = EnvironmentalAlarms + Math.Round((tot / monthCnt), 2);
+                            }
+                            break;
+                        case "111900":
+                            if (monthCnt > 0)
+                            {
+                                EnvironmentalAlarms = Math.Round(EnvironmentalAlarms);
+                                e.Row.Cells[52].Text = EnvironmentalAlarms.ToString();
+                            }
+                            break;
+                        default:
+                            if (monthCnt > 0)
+                            {
+                                calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt, MidpointRounding.AwayFromZero);
+                                e.Row.Cells[52].Text = calAve.ToString();
+                            }
+                            break;
                     }
-                    else
-                    {
-                        if (e.Row.Cells[2].Text == "Critical Alarm Close Time" || e.Row.Cells[2].Text == "CLEC Call Back Average" || e.Row.Cells[2].Text == "Percentage of surveys completed" || e.Row.Cells[2].Text == "REHD percentage of surveys completed")
-                        {
-                            calAve = Math.Round((tot / monthCnt), 2);
-                        }
-                        else
-                        {
-                            calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt);
-                        }
-                    }
+                    tot = 0;
+                    monthCnt = 0;
                 }
-                e.Row.Cells[52].Text = calAve.ToString();
-                tot = 0;
             }
         }
     }
@@ -182,6 +249,12 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
             startYear = Convert.ToInt32(startDt.ToString().Substring(0, 4));
             endYear = Convert.ToInt32(endDt.ToString().Substring(0, 4));
 
+            DateTime firstDate = new DateTime(startYear, startMonth, 01);
+            DateTime secondDate = new DateTime(endYear, endMonth, 01);
+            int m1 = (secondDate.Month - firstDate.Month);
+            int m2 = (secondDate.Year - firstDate.Year) * 12;
+            months = m1 + m2;
+
             if (startDt > endDt)
             {
                 errors = "End Date must be after Start Date";
@@ -189,15 +262,6 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
             }
             else
             {
-                yearCnt = endYear - startYear + 1;
-                if (yearCnt == 1)
-                {
-                    monthCnt = endMonth - startMonth + 1;
-                }
-                else
-                {
-                    monthCnt = endMonth - startMonth + 13;
-                }
                 GridView1.DataBind();
             }
         }
@@ -211,14 +275,12 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
         startYear = Convert.ToInt32(startDt.ToString().Substring(0, 4));
         endYear = Convert.ToInt32(endDt.ToString().Substring(0, 4));
         yearCnt = endYear - startYear + 1;
-        if (yearCnt == 1)
-        {
-            monthCnt = endMonth - startMonth + 1;
-        }
-        else
-        {
-            monthCnt = endMonth - startMonth + 13;
-        }
+
+        DateTime firstDate = new DateTime(startYear, startMonth, 01);
+        DateTime secondDate = new DateTime(endYear, endMonth, 01);
+        int m1 = (secondDate.Month - firstDate.Month);
+        int m2 = (secondDate.Year - firstDate.Year) * 12;
+        months = m1 + m2;
 
         DataView dv = (DataView)dsExport.Select(DataSourceSelectArguments.Empty);
         DataTable dt = (DataTable)dv.ToTable();
@@ -279,55 +341,128 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
             }
         }
 
+
         for (int i = 0; i < dt.Rows.Count; i++)
         {
             for (int c = 3; c < dt.Columns.Count; c++)
             {
+                if (!String.IsNullOrEmpty(dt.Rows[i][c].ToString()))
+                {
+                    tot = tot + Convert.ToDecimal(dt.Rows[i][c]);
+                    monthCnt = monthCnt + 1;
+
+                    // display dollar format for month detail amounts
+                    switch (dt.Rows[i][0].ToString())
+                    {
+                        case "110000":
+                        case "110800":
+                        case "110900":
+                        case "111000":
+                        case "111100":
+                        case "111200":
+                            dt.Rows[i][c] = string.Format("{0:C2}", Convert.ToDecimal(dt.Rows[i][c]));
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+
                 string colName = dt.Columns[c].ColumnName;
                 if (colName == "TOTAL")
                 {
-                    if (dt.Rows[i][2].ToString() == "Likeliness to Recommend")
+                    dt.Rows[i][c] = tot;
+
+                    // display dollar format for total detail amounts
+                    switch (dt.Rows[i][0].ToString())
                     {
-                        dt.Rows[i][c] = "";
+                        case "110000":
+                        case "110800":
+                        case "110900":
+                        case "111000":
+                        case "111100":
+                        case "111200":
+                            dt.Rows[i][c] = string.Format("{0:C2}", Convert.ToDecimal(dt.Rows[i][c]));
+                            break;
+                        default:
+                            break;
                     }
-                    else
-                    {
-                        dt.Rows[i][c] = tot;
-                    }
-                    
                 }
                 else
                 {
                     if (colName == "AVE")
                     {
-                        if (dt.Rows[i][2].ToString() == "Critical Alarm Close Time" || dt.Rows[i][2].ToString() == "CLEC Call Back Average" || dt.Rows[i][2].ToString() == "Percentage of surveys completed" || dt.Rows[i][2].ToString() == "Likeliness to Recommend")
+                        switch (dt.Rows[i][0].ToString())
                         {
-                            calAve = (decimal)Math.Round(((decimal)tot / (decimal)monthCnt), 2);
+                            case "104200":
+                            case "104500":
+                            case "104800":
+                            case "105100":
+                            case "109100":
+                            case "109200":
+                            case "109600":
+                            case "109700":
+                                if (monthCnt > 0)
+                                {
+                                    calAve = Math.Round((tot / monthCnt), 3);
+                                    dt.Rows[i][c] = calAve.ToString();
+                                }
+                                break;
+                            case "105400":
+                            case "109000":
+                            case "109500":
+                            case "109900":
+                                if (monthCnt > 0)
+                                {
+                                    calAve = Math.Round((tot / monthCnt), 2);
+                                    dt.Rows[i][c] = calAve.ToString();
+                                }
+                                break;
+                            // display dollar format for average detail amounts
+                            case "110000":
+                            case "110800":
+                            case "110900":
+                            case "111000":
+                            case "111100":
+                            case "111200":
+                                if (monthCnt > 0)
+                                {
+                                    calAve = Math.Round((tot / monthCnt), 2);
+                                    dt.Rows[i][c] = calAve.ToString("C2");
+                                }
+                                break;
+                            case "111700":
+                            case "111800":
+                                if (monthCnt > 0)
+                                {
+                                    calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt, MidpointRounding.AwayFromZero);
+                                    dt.Rows[i][c] = calAve.ToString();
+                                    EnvironmentalAlarms = EnvironmentalAlarms + Math.Round((tot / monthCnt), 2);
+                                }
+                                break;
+                            case "111900":
+                                if (monthCnt > 0)
+                                {
+                                    EnvironmentalAlarms = Math.Round(EnvironmentalAlarms);
+                                    dt.Rows[i][c] = EnvironmentalAlarms.ToString();
+                                }
+                                break;
+                            default:
+                                if (monthCnt > 0)
+                                {
+                                    calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt, MidpointRounding.AwayFromZero);
+                                    dt.Rows[i][c] = calAve.ToString();
+                                }
+                                break;
                         }
-                        else
-                        {
-                            if (dt.Rows[i][2].ToString().Contains("Attrition %"))
-                            {
-                                calAve = Math.Round((tot / monthCnt), 1);
-                            }
-                            else
-                            {
-                                calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt);
-                            }
-                        }
-                        dt.Rows[i][c] = calAve.ToString();
+
                         tot = 0;
+                        monthCnt = 0;
                     }
-                    else
-                    {                        
-                        if (!String.IsNullOrEmpty(dt.Rows[i][c].ToString()) )
-                        {
-                            tot = tot + Convert.ToDecimal(dt.Rows[i][c]);
-                        }
-                    }
-                }          
+                }
             }
         }
+        dt.Columns.Remove("METRICS_ID");
         Excel.ExportToExcelCenter(dt, "Metrics Report");
     }
 }
