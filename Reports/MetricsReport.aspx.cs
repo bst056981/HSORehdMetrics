@@ -121,12 +121,12 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                     // display dollar format for month detail amounts
                     switch (e.Row.Cells[0].Text)
                     {
-                        case "110000":
-                        case "110800":
-                        case "110900":
+                        case "110200":
                         case "111000":
                         case "111100":
                         case "111200":
+                        case "111300":
+                        case "111400":
                             e.Row.Cells[i].Text = string.Format("{0:C2}", Convert.ToDecimal(e.Row.Cells[i].Text));
                             break;
                         default:
@@ -145,12 +145,12 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                 // display dollar format for total detail amounts 
                 switch (e.Row.Cells[0].Text)
                 {
-                    case "110000":
-                    case "110800":
-                    case "110900":
+                    case "110200":
                     case "111000":
                     case "111100":
                     case "111200":
+                    case "111300":
+                    case "111400":
                         e.Row.Cells[51].Text = string.Format("{0:C2}", Convert.ToDecimal(e.Row.Cells[51].Text));
                         break;
                     default:
@@ -181,7 +181,7 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                         case "105400":
                         case "109000":
                         case "109500":
-                        case "109900":
+                        case "110100":
                             if (monthCnt > 0)
                             {
                                 calAve = Math.Round((tot / monthCnt), 2);
@@ -189,20 +189,20 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                             }
                             break;
                         // display dollar format for average detail amounts
-                        case "110000":
-                        case "110800":
-                        case "110900":
+                        case "110200":
                         case "111000":
                         case "111100":
                         case "111200":
+                        case "111300":
+                        case "111400":
                             if (monthCnt > 0)
                             {
                                 calAve = Math.Round((tot / monthCnt), 2);
                                 e.Row.Cells[52].Text = calAve.ToString("C2");
                             }
                             break;
-                        case "111700":
-                        case "111800":
+                        case "111900":
+                        case "112000":
                             if (monthCnt > 0)
                             {
                                 calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt, MidpointRounding.AwayFromZero);
@@ -210,7 +210,7 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                                 EnvironmentalAlarms = EnvironmentalAlarms + Math.Round((tot / monthCnt), 2);
                             }
                             break;
-                        case "111900":
+                        case "112100":
                             if (monthCnt > 0)
                             {
                                 EnvironmentalAlarms = Math.Round(EnvironmentalAlarms);
@@ -354,12 +354,12 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                     // display dollar format for month detail amounts
                     switch (dt.Rows[i][0].ToString())
                     {
-                        case "110000":
-                        case "110800":
-                        case "110900":
+                        case "110200":
                         case "111000":
                         case "111100":
                         case "111200":
+                        case "111300":
+                        case "111400":
                             dt.Rows[i][c] = string.Format("{0:C2}", Convert.ToDecimal(dt.Rows[i][c]));
                             break;
                         default:
@@ -376,12 +376,12 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                     // display dollar format for total detail amounts
                     switch (dt.Rows[i][0].ToString())
                     {
-                        case "110000":
-                        case "110800":
-                        case "110900":
+                        case "110200":
                         case "111000":
                         case "111100":
                         case "111200":
+                        case "111300":
+                        case "111400":
                             dt.Rows[i][c] = string.Format("{0:C2}", Convert.ToDecimal(dt.Rows[i][c]));
                             break;
                         default:
@@ -411,7 +411,7 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                             case "105400":
                             case "109000":
                             case "109500":
-                            case "109900":
+                            case "110100":
                                 if (monthCnt > 0)
                                 {
                                     calAve = Math.Round((tot / monthCnt), 2);
@@ -419,20 +419,20 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                                 }
                                 break;
                             // display dollar format for average detail amounts
-                            case "110000":
-                            case "110800":
-                            case "110900":
+                            case "110200":
                             case "111000":
                             case "111100":
                             case "111200":
+                            case "111300":
+                            case "111400":
                                 if (monthCnt > 0)
                                 {
                                     calAve = Math.Round((tot / monthCnt), 2);
                                     dt.Rows[i][c] = calAve.ToString("C2");
                                 }
                                 break;
-                            case "111700":
-                            case "111800":
+                            case "111900":
+                            case "112000":
                                 if (monthCnt > 0)
                                 {
                                     calAve = (decimal)Math.Round((decimal)tot / (decimal)monthCnt, MidpointRounding.AwayFromZero);
@@ -440,7 +440,7 @@ public partial class Reports_MetricsReport : System.Web.UI.Page
                                     EnvironmentalAlarms = EnvironmentalAlarms + Math.Round((tot / monthCnt), 2);
                                 }
                                 break;
-                            case "111900":
+                            case "112100":
                                 if (monthCnt > 0)
                                 {
                                     EnvironmentalAlarms = Math.Round(EnvironmentalAlarms);

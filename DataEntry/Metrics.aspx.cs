@@ -457,19 +457,19 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                                 else { mv.Ave = "0"; }
                                 break;
                             case "105400":
-                            case "109900":
+                            case "110100":
                                 if (months > 0)
                                 {
                                     ave = (decimal)Math.Round(((decimal)ytd / (decimal)months), 2);
                                     mv.Ave = ave.ToString();
                                 }
                                 break;
-                            case "110000":
-                            case "110800":
-                            case "110900":
+                            case "110200":
                             case "111000":
                             case "111100":
                             case "111200":
+                            case "111300":
+                            case "111400":
                                 if (months > 0)
                                 {
                                     ave = (decimal)Math.Round(((decimal)ytd / (decimal)months), 2);
@@ -509,9 +509,9 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "108800":
                         case "109100":
                         case "109300":
-                        case "110700":
-                        case "111300":
-                        case "111700":
+                        case "110900":
+                        case "111500":
+                        case "111900":
                             cntJan1 = cntJan;
                             cntFeb1 = cntFeb;
                             cntMar1 = cntMar;
@@ -569,9 +569,9 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "108500":
                         case "108900":
                         case "109400":
-                        case "109800":
-                        case "111400":
-                        case "111800":
+                        case "1100000":
+                        case "111600":
+                        case "112000":
                             cntJan2 = cntJan;
                             cntFeb2 = cntFeb;
                             cntMar2 = cntMar;
@@ -626,7 +626,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "106700":
                         case "108000":
                         case "108600":
-                        case "110100":
+                        case "110300":
                             cntJan3 = cntJan;
                             cntFeb3 = cntFeb;
                             cntMar3 = cntMar;
@@ -662,7 +662,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "106300":
                         case "106800":
                         case "108100":
-                        case "110300":
+                        case "110500":
                             cntJan4 = cntJan;
                             cntFeb4 = cntFeb;
                             cntMar4 = cntMar;
@@ -917,8 +917,8 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                         case "102900":
                         case "106400":
                         case "107000":
-                        case "111500":
-                        case "111900":
+                        case "111700":
+                        case "112100":
                             cntJanTotal = cntJan1 + cntJan2 + cntJan3 + cntJan4 + cntJan5 + cntJan6 + cntJan7;
                             cntFebTotal = cntFeb1 + cntFeb2 + cntFeb3 + cntFeb4 + cntFeb5 + cntFeb6 + cntFeb7;
                             cntMarTotal = cntMar1 + cntMar2 + cntMar3 + cntMar4 + cntMar5 + cntMar6 + cntMar7;
@@ -1692,7 +1692,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = 0;
                             break;
-                        case "110400":
+                        case "110600":
                             cntJanTotal = cntJan3 + cntJan4;
                             cntFebTotal = cntFeb3 + cntFeb4;
                             cntMarTotal = cntMar3 + cntMar4;
@@ -1737,7 +1737,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
 
         for (int i = 0; i < dt.Rows.Count; i++)
         {
-            if (dt.Rows[i][0].ToString() == "110000" || dt.Rows[i][0].ToString() == "110800" || dt.Rows[i][0].ToString() == "110900" || dt.Rows[i][0].ToString() == "111000" || dt.Rows[i][0].ToString() == "111100" || dt.Rows[i][0].ToString() == "111200")
+            if (dt.Rows[i][0].ToString() == "110200" || dt.Rows[i][0].ToString() == "111000" || dt.Rows[i][0].ToString() == "111100" || dt.Rows[i][0].ToString() == "111200" || dt.Rows[i][0].ToString() == "111300" || dt.Rows[i][0].ToString() == "111400")
             {
                 for (int z = 3; z < 15; z++)
                 {
