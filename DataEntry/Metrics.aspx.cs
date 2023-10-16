@@ -710,21 +710,21 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             cntDec6 = cntDec;
                             cntYtd6 = cntYtd + cntJan + cntFeb + cntMar + cntApr + cntMay + cntJun + cntJul + cntAug + cntSep + cntOct + cntNov + cntDec;
                             break;
-                        case "102800":
-                            cntJan7 = cntJan;
-                            cntFeb7 = cntFeb;
-                            cntMar7 = cntMar;
-                            cntApr7 = cntApr;
-                            cntMay7 = cntMay;
-                            cntJun7 = cntJun;
-                            cntJul7 = cntJul;
-                            cntAug7 = cntAug;
-                            cntSep7 = cntSep;
-                            cntOct7 = cntOct;
-                            cntNov7 = cntNov;
-                            cntDec7 = cntDec;
-                            cntYtd7 = cntYtd + cntJan + cntFeb + cntMar + cntApr + cntMay + cntJun + cntJul + cntAug + cntSep + cntOct + cntNov + cntDec;
-                            break;
+                        //case "102800":
+                        //    cntJan7 = cntJan;
+                        //    cntFeb7 = cntFeb;
+                        //    cntMar7 = cntMar;
+                        //    cntApr7 = cntApr;
+                        //    cntMay7 = cntMay;
+                        //    cntJun7 = cntJun;
+                        //    cntJul7 = cntJul;
+                        //    cntAug7 = cntAug;
+                        //    cntSep7 = cntSep;
+                        //    cntOct7 = cntOct;
+                        //    cntNov7 = cntNov;
+                        //    cntDec7 = cntDec;
+                        //    cntYtd7 = cntYtd + cntJan + cntFeb + cntMar + cntApr + cntMay + cntJun + cntJul + cntAug + cntSep + cntOct + cntNov + cntDec;
+                        //    break;
                         default:
                             break;
                     }
