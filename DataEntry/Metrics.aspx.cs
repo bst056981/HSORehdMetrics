@@ -912,7 +912,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = cntJan1 = cntJan2 = cntJan3 = cntJan4 = cntJan5 = cntJan6 = cntJan7 = cntFeb1 = cntFeb2 = cntFeb3 = cntFeb4 = cntFeb5 = cntFeb6 = cntFeb7 =
                             cntMar1 = cntMar2 = cntMar3 = cntMar4 = cntMar5 = cntMar6 = cntMar7 = cntApr1 = cntApr2 = cntApr3 = cntApr4 = cntApr5 = cntApr6 = cntApr7 = cntMay1 = cntMay2 = cntMay3 = cntMay4 = cntMay5 = cntMay6 = cntMay7 = cntJun1 = cntJun2 = cntJun3 = cntJun4 = cntJun5 = cntJun6 = cntJun7 = cntJul1 = cntJul2 = cntJul3 = cntJul4 = cntJul5 = cntJul6 = cntJul7 =
-                            cntAug1 = cntAug2 = cntAug3 = cntAug4 = cntAug5 = cntAug6 = cntAug7 = cntSep1 = cntSep2 = cntSep3 = cntSep4 = cntSep5 = cntSep6 = cntSep7 = cntOct1 = cntOct2 = cntOct3 = cntOct4 = cntOct5 = cntOct6 = cntOct7 = cntNov1 = cntNov2 = cntNov3 = cntNov4 = cntNov5 = cntNov6 = cntNov7 = cntDec1 = cntDec2 = cntDec3 = cntDec4 = cntDec5 = cntDec = cntDec7 = 0;
+                            cntAug1 = cntAug2 = cntAug3 = cntAug4 = cntAug5 = cntAug6 = cntAug7 = cntSep1 = cntSep2 = cntSep3 = cntSep4 = cntSep5 = cntSep6 = cntSep7 = cntOct1 = cntOct2 = cntOct3 = cntOct4 = cntOct5 = cntOct6 = cntOct7 = cntNov1 = cntNov2 = cntNov3 = cntNov4 = cntNov5 = cntNov6 = cntNov7 = cntDec1 = cntDec2 = cntDec3 = cntDec4 = cntDec5 = cntDec6 = cntDec7 = 0;
                             break;
                         case "102900":
                         case "106400":
@@ -943,7 +943,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = cntJan1 = cntJan2 = cntJan3 = cntJan4 = cntJan5 = cntJan6 = cntJan7 = cntFeb1 = cntFeb2 = cntFeb3 = cntFeb4 = cntFeb5 = cntFeb6 = cntFeb7 =
                             cntMar1 = cntMar2 = cntMar3 = cntMar4 = cntMar5 = cntMar6 = cntMar7 = cntApr1 = cntApr2 = cntApr3 = cntApr4 = cntApr5 = cntApr6 = cntApr7 = cntMay1 = cntMay2 = cntMay3 = cntMay4 = cntMay5 = cntMay6 = cntMay7 = cntJun1 = cntJun2 = cntJun3 = cntJun4 = cntJun5 = cntJun6 = cntJun7 = cntJul1 = cntJul2 = cntJul3 = cntJul4 = cntJul5 = cntJul6 = cntJul7 =
-                            cntAug1 = cntAug2 = cntAug3 = cntAug4 = cntAug5 = cntAug6 = cntAug7 = cntSep1 = cntSep2 = cntSep3 = cntSep4 = cntSep5 = cntSep6 = cntSep7 = cntOct1 = cntOct2 = cntOct3 = cntOct4 = cntOct5 = cntOct6 = cntOct7 = cntNov1 = cntNov2 = cntNov3 = cntNov4 = cntNov5 = cntNov6 = cntNov7 = cntDec1 = cntDec2 = cntDec3 = cntDec4 = cntDec5 = cntDec = cntDec7 = 0;
+                            cntAug1 = cntAug2 = cntAug3 = cntAug4 = cntAug5 = cntAug6 = cntAug7 = cntSep1 = cntSep2 = cntSep3 = cntSep4 = cntSep5 = cntSep6 = cntSep7 = cntOct1 = cntOct2 = cntOct3 = cntOct4 = cntOct5 = cntOct6 = cntOct7 = cntNov1 = cntNov2 = cntNov3 = cntNov4 = cntNov5 = cntNov6 = cntNov7 = cntDec1 = cntDec2 = cntDec3 = cntDec4 = cntDec5 = cntDec6 = cntDec7 = 0;
                             break;
                         case "104000":
                             if (!String.IsNullOrEmpty(cntYtd101800.ToString()) && months > 0)
@@ -1717,7 +1717,7 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
                             DBHelper.Execute(sql);
                             cntJanTotal = cntFebTotal = cntMarTotal = cntAprTotal = cntMayTotal = cntJunTotal = cntJulTotal = cntAugTotal = cntSepTotal = cntOctTotal = cntNovTotal = cntDecTotal = cntDecTotal = cntYtd = cntJan1 = cntJan2 = cntJan3 = cntJan4 = cntJan5 = cntJan6 = cntJan7 = cntFeb1 = cntFeb2 = cntFeb3 = cntFeb4 = cntFeb5 = cntFeb6 = cntFeb7 =
                             cntMar1 = cntMar2 = cntMar3 = cntMar4 = cntMar5 = cntMar6 = cntMar7 = cntApr1 = cntApr2 = cntApr3 = cntApr4 = cntApr5 = cntApr6 = cntApr7 = cntMay1 = cntMay2 = cntMay3 = cntMay4 = cntMay5 = cntMay6 = cntMay7 = cntJun1 = cntJun2 = cntJun3 = cntJun4 = cntJun5 = cntJun6 = cntJun7 = cntJul1 = cntJul2 = cntJul3 = cntJul4 = cntJul5 = cntJul6 = cntJul7 =
-                            cntAug1 = cntAug2 = cntAug3 = cntAug4 = cntAug5 = cntAug6 = cntAug7 = cntSep1 = cntSep2 = cntSep3 = cntSep4 = cntSep5 = cntSep6 = cntSep7 = cntOct1 = cntOct2 = cntOct3 = cntOct4 = cntOct5 = cntOct6 = cntOct7 = cntNov1 = cntNov2 = cntNov3 = cntNov4 = cntNov5 = cntNov6 = cntNov7 = cntDec1 = cntDec2 = cntDec3 = cntDec4 = cntDec5 = cntDec = cntDec7 = 0;
+                            cntAug1 = cntAug2 = cntAug3 = cntAug4 = cntAug5 = cntAug6 = cntAug7 = cntSep1 = cntSep2 = cntSep3 = cntSep4 = cntSep5 = cntSep6 = cntSep7 = cntOct1 = cntOct2 = cntOct3 = cntOct4 = cntOct5 = cntOct6 = cntOct7 = cntNov1 = cntNov2 = cntNov3 = cntNov4 = cntNov5 = cntNov6 = cntNov7 = cntDec1 = cntDec2 = cntDec3 = cntDec4 = cntDec5 = cntDec6 = cntDec7 = 0;
                             break;
                         default:
                             break;
