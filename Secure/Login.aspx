@@ -5,12 +5,12 @@
     <asp:MultiView ID="mv1" runat="server">
     <asp:View ID="vNotLoggedIn" runat="server">
         <div id="div1" runat="server">
-            <span style="font-family:Calibri;font-size:large;text-align:center" runat="server">HSO Metrics Login</span>
+            <span style="font-family:Calibri;font-size:large;text-align:center" runat="server">Metrics Login</span>
         </div>
         <div ID="div2" runat="server">
             <link ID="link1" runat="server" rel="shortcut icon" href="images/BSicon.ico" type="image/vnd.microsoft.icon" />
             <link ID="link2" runat="server" href="Login.css" rel="stylesheet" />
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/images/logoBS.jpg" AlternateText="Brightspeed" Height="71" Width="230" />
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/images/logoBS.jpg" AlternateText="PyeBarker" Height="71" Width="230" />
         </div>
         <div ID="div3" runat="server">
             <table>

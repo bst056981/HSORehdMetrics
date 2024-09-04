@@ -23,7 +23,7 @@
                 </asp:SqlDataSource>
             </td>
             <td width="100px">
-                <asp:Button Text="Update" OnClick="OnUpdate" BackColor="Orange" runat="server" />
+                <asp:Button Text="Update" OnClick="OnUpdate" BackColor="#29b04b" runat="server" />
             </td>
             <td>
                 <asp:Button ID="btnCreate" runat="server" Text="Create Report" OnClick="btnCreate_Click" />
@@ -37,8 +37,8 @@
         AllowSorting="False" SkinID="igoogle-summer" OnRowDataBound="Gridview_RowDataBound" Width="1469px" HeaderStyle-HorizontalAlign="Center">
         <Columns>
             <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" Visible="False" />
-            <asp:BoundField DataField="Category" HeaderText="Category" ReadOnly="True" ItemStyle-BackColor="#F57E20" ItemStyle-HorizontalAlign="Center" ItemStyle-Wrap="false" />
-            <asp:BoundField HeaderText="Field" ReadOnly="true" DataField="Field" ItemStyle-BackColor="#F57E20" ItemStyle-HorizontalAlign="Center" ItemStyle-Wrap="false" />
+            <asp:BoundField DataField="Category" HeaderText="Category" ReadOnly="True" ItemStyle-BackColor="#619eed" ItemStyle-HorizontalAlign="Center" ItemStyle-Wrap="false" />
+            <asp:BoundField HeaderText="Field" ReadOnly="true" DataField="Field" ItemStyle-BackColor="#619eed" ItemStyle-HorizontalAlign="Center" ItemStyle-Wrap="false" />
             <asp:TemplateField HeaderText="CALC" Visible="false">
                 <ItemTemplate>
                     <asp:TextBox ID="txtCalc" runat="server" Visible="false" />
@@ -120,7 +120,7 @@
     <br />
 
     <div style="text-align: center;">
-        <asp:Button Text="Update" OnClick="OnUpdate" runat="server" BackColor="Orange" />
+        <asp:Button Text="Update" OnClick="OnUpdate" runat="server" BackColor="#29b04b" />
     </div>
 
     <asp:HiddenField ID="hfYear" runat="server" Value="" />

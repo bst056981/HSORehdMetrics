@@ -62,8 +62,8 @@
                                         StaticDisplayLevels="2" DynamicHorizontalOffset="0" DynamicVerticalOffset="0"
                                         SkipLinkText="" StaticSubMenuIndent="5px" CssClass="menu">
                                         <StaticMenuItemStyle HorizontalPadding="0px" VerticalPadding="0px" />
-                                        <DynamicHoverStyle BackColor="Yellow" ForeColor="#666" />
-                                        <DynamicMenuStyle BackColor="#F57E20" HorizontalPadding="5px" VerticalPadding="2px" />
+                                        <DynamicHoverStyle BackColor="#29b04b" ForeColor="#666" />
+                                        <DynamicMenuStyle BackColor="#619eed" HorizontalPadding="5px" VerticalPadding="2px" />
                                         <DynamicSelectedStyle ForeColor="#666" HorizontalPadding="5px" VerticalPadding="2px" />
                                         <DynamicMenuItemStyle HorizontalPadding="0px" VerticalPadding="0px" />
                                     </asp:Menu>
@@ -92,7 +92,7 @@
             <p>
                 &copy; Copyright
             <%= DateTime.Now.Year %>
-            Brightspeed. All Rights Reserved
+            PyeBarker. All Rights Reserved
             </p>
         </footer>
     </form>

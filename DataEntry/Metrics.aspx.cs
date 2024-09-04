@@ -335,23 +335,23 @@ public partial class DataEntry_Metrics : System.Web.UI.Page
             ((TextBox)e.Row.FindControl("txtYTD")).Text = DataBinder.Eval(e.Row.DataItem, "YTD").ToString();
             ((TextBox)e.Row.FindControl("txtAVE")).Text = DataBinder.Eval(e.Row.DataItem, "AVE").ToString();
 
-            ((TextBox)e.Row.FindControl("txtYTD")).BackColor = Color.Orange;
-            ((TextBox)e.Row.FindControl("txtAVE")).BackColor = Color.Orange;
+            ((TextBox)e.Row.FindControl("txtYTD")).BackColor = Color.Green;
+            ((TextBox)e.Row.FindControl("txtAVE")).BackColor = Color.Green;
 
             if (((TextBox)e.Row.FindControl("txtCalc")).Text == "Y")
             {
-                ((TextBox)e.Row.FindControl("txtJan")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtFeb")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtMar")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtApr")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtMay")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtJun")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtJul")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtAug")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtSep")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtOct")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtNov")).BackColor = Color.Orange;
-                ((TextBox)e.Row.FindControl("txtDec")).BackColor = Color.Orange;
+                ((TextBox)e.Row.FindControl("txtJan")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtFeb")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtMar")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtApr")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtMay")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtJun")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtJul")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtAug")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtSep")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtOct")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtNov")).BackColor = Color.Green;
+                ((TextBox)e.Row.FindControl("txtDec")).BackColor = Color.Green;
                 ((TextBox)e.Row.FindControl("txtJan")).Enabled = false;
                 ((TextBox)e.Row.FindControl("txtFeb")).Enabled = false;
                 ((TextBox)e.Row.FindControl("txtMar")).Enabled = false;
